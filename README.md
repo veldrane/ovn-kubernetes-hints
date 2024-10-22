@@ -38,6 +38,6 @@ Cluster is installed by clean kubeadm command via ansible roles and scripts (loo
 - EgressIp has been enabled
 
 
-### Posible bugs and quirks of this instalation
+### Possible bugs and quirks of this instalation
 
 - if you enbable externalip is possible to route trafice from outside world to the pod network. Needs to be checked on the ocp4 as well in the future.
