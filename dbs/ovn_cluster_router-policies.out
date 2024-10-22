@@ -1,0 +1,1428 @@
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004
+_uuid               : 6bdbd638-bda9-4d61-9890-341189d79ffc
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn17.lab.syscallx86.com\" && ip4.dst == 10.1.16.17 /* ovn17.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.3.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 9da14c68-1616-4e56-8bda-e7059ae77782
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn18.lab.syscallx86.com\" && ip4.dst == 10.1.16.18 /* ovn18.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.4.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 793fc758-946d-4711-88b9-8a93fd9e616c
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "(ip4.src == $a4548040316634674295 || ip4.src == $a13607449821398607916) && ip4.dst == $a14918748166599097711"
+nexthop             : []
+nexthops            : []
+options             : {pkt_mark="1008"}
+priority            : 102
+
+_uuid               : 703c7271-a31f-4b12-a084-f5968a02b039
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn52.lab.syscallx86.com\" && ip4.dst == 10.1.16.52 /* ovn52.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.6.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : b027c249-ef74-4163-b267-18a7717cd5d8
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 100.64.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 99e43b3b-2f1e-42b8-a122-72c660198d7d
+action              : allow
+bfd_sessions        : []
+external_ids        : {}
+match               : "ip4.src == 10.38.0.0/16 && ip4.dst == 10.38.0.0/16"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 5bfe66c4-9b92-48bf-90c2-2a2ce74491da
+action              : reroute
+bfd_sessions        : []
+external_ids        : {name=default-egress}
+match               : "ip4.src == 10.38.2.3"
+nexthop             : []
+nexthops            : ["100.64.0.7"]
+options             : {}
+priority            : 100
+
+_uuid               : 31923e3c-31dc-4eff-9117-188ade222f89
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn16.lab.syscallx86.com\" && ip4.dst == 10.1.16.16 /* ovn16.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.2.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 1297c63d-a7f8-4fa4-8af9-4e210aea6c16
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn11.lab.syscallx86.com\" && ip4.dst == 10.1.16.11 /* ovn11.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.1.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 34fea5e5-5c96-4044-b09f-a5acd09c8c81
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn15.lab.syscallx86.com\" && ip4.dst == 10.1.16.15 /* ovn15.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.0.2"]
+options             : {}
+priority            : 1004
+
+_uuid               : 04a02516-905e-4946-9eb3-0b299962bcd9
+action              : allow
+bfd_sessions        : []
+external_ids        : {ip-family=ip, "k8s.ovn.org/id"="default-network-controller:EgressIP:102:EIP-No-Reroute-reply-traffic:ip", "k8s.ovn.org/name"=EIP-No-Reroute-reply-traffic, "k8s.ovn.org/owner-controller"=default-network-controller, "k8s.ovn.org/owner-type"=EgressIP, priority="102"}
+match               : "pkt.mark == 42"
+nexthop             : []
+nexthops            : []
+options             : {}
+priority            : 102
+
+_uuid               : 6c3dd8c7-42c6-4385-af4b-47cab584754e
+action              : reroute
+bfd_sessions        : []
+external_ids        : {}
+match               : "inport == \"rtos-ovn51.lab.syscallx86.com\" && ip4.dst == 10.1.16.51 /* ovn51.lab.syscallx86.com */"
+nexthop             : []
+nexthops            : ["10.38.5.2"]
+options             : {}
+priority            : 1004

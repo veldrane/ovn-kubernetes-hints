@@ -22,18 +22,19 @@ deployment object:
 https://docs.okd.io/latest/networking/configuring-ipfailover.html
 
 
-### Content
+### Repository ontent
 
 - ./yaml - object with working ovn object configuration
 - ./images - dockerfiles and some set of customized stuff
 - ./k8s - rendered kubernetes objects from working cluster
+- ./dbs - exports from databases
 
 
-### Configuration
+### Test cluster configuration
 
-Cluster is installed by clean kubeadm command via ansible roles and scripts (look at my lab direcotry). Firewall is disabled and it needs to be more research here to find how to incorporate some ipfilter rules (nftable/iptables) into cni and nodes. Network policy is done by openflow rules.
+Cluster is installed by clean kubeadm command via ansible roles and scripts (look at my lab project and folder 05_k8s). Firewall is disabled and it needs to have more research here to find how to incorporate some ipfilter rules (nftable/iptables) into cni and nodes. Network policy is done by openflow rules.
 
-- cluster is deplyed on the local domain lab.syscallx86.com. External dns is provided by freeipa server and all nodes are joined into ipa domain.
+- cluster is deployed on the local domain lab.syscallx86.com. External dns is provided by freeipa server and all nodes are joined into ipa domain.
 - genarally test cluster has one master and 6 nodes
 - nodes has only one br-ex interface in 10.1.16.x/24 subnet. Recomendation is two iface in original doc (see github ovn-kubernetes)
 - master 10.1.16.11 other nodes 10.1.16.2[1-5], nodes 10.1.16.5[12] has been labeled like gateway and keepalived with external ips has been placed here
@@ -42,9 +43,9 @@ Cluster is installed by clean kubeadm command via ansible roles and scripts (loo
 - ssl has been disabled (openshift has slighly different configuration where more stuff are placed on one pod => no ssl just unix sockets)
 - EgressIp has been enabled
 
-### Basic commands
+### Basic ovn commands
 
-Readme is focused on the north bound database, so high level setup of the cni configuration:
+This description is mainly focused on the north bound database => so the high level network setup of the cni:
 
 ```
 # kubectl get pods -o wide
@@ -58,9 +59,58 @@ ovnkube-node-rcfwk               3/3     Running   105        53d   10.1.16.52  
 ovnkube-node-rjwwz               3/3     Running   105        55d   10.1.16.16   ovn16.lab.syscallx86.com   <none>           <none>
 ovnkube-node-ss9zx               3/3     Running   103        53d   10.1.16.51   ovn51.lab.syscallx86.com   <none>           <none>
 ovnkube-node-zzccr               3/3     Running   111        55d   10.1.16.18   ovn18.lab.syscallx86.com   <none>           <none>
+
+# kubectl exec --stdin --tty ovnkube-db-84468d897f-764mr -c nb-ovsdb -- /bin/bash
+# 
 ```
 
-### Network architecture
+The nothbound database contains tables and content of them can be show by command ovn-nbctl list <table name>.
+
+List of tables can be found in man page of the 
+
+https://man7.org/linux/man-pages/man5/ovn-nb.5.html
+
+
+#### List of content of the nb database:
+
+```
+# ovn-nbctl show
+switch d6dd4a58-cc95-4664-8b98-7aeabb939814 (join)
+    port jtor-GR_ovn11.lab.syscallx86.com
+        type: router
+        router-port: rtoj-GR_ovn11.lab.syscallx86.com
+    port jtor-GR_ovn51.lab.syscallx86.com
+        type: router
+        router-port: rtoj-GR_ovn51.lab.syscallx86.com
+    port jtor-GR_ovn16.lab.syscallx86.com
+        type: router
+        router-port: rtoj-GR_ovn16.lab.syscallx86.com
+    port jtor-GR_ovn17.lab.syscallx86.com
+        type: router
+        router-port: rtoj-GR_ovn17.lab.syscallx86.com
+    port jtor-GR_ovn15.lab.syscallx86.com
+        type: router
+        router-port: rtoj-GR_ovn15.lab.syscallx86.com
+    port jtor-ovn_cluster_router
+        type: router
+        router-port: rtoj-ovn_cluster_router
+    port jtor-GR_ovn18.lab.syscallx86.com
+        type: router
+        router-port: rtoj-GR_ovn18.lab.syscallx86.com
+    port jtor-GR_ovn52.lab.syscallx86.com
+        type: router
+        router-port: rtoj-GR_ovn52.lab.syscallx86.com
+switch 6dcf5b88-9ef6-4818-9327-cb70139b372e (ext_ovn17.lab.syscallx86.com)
+    port br-ex_ovn17.lab.syscallx86.com
+.
+.
+.
+```
+
+
+
+
+### CNI network architecture
 
 Based on the https://ovn-kubernetes.io/design/topology/ ovn has:
 
@@ -126,6 +176,53 @@ type                : router
 up                  : true
 ```
 
+
+#### Ovn cluster router (ovn_cluster_router)
+
+```
+# ovn-nbctl list logical_router ovn_cluster_router
+_uuid               : 11f24db4-2877-40ba-8beb-87a073964e74
+copp                : aad92053-47eb-48a9-b4e2-21cdf8d74137
+enabled             : []
+external_ids        : {k8s-cluster-router=yes}
+load_balancer       : []
+load_balancer_group : []
+name                : ovn_cluster_router
+nat                 : []
+options             : {always_learn_from_arp_request="false"}
+policies            : [04a02516-905e-4946-9eb3-0b299962bcd9, 1297c63d-a7f8-4fa4-8af9-4e210aea6c16, 31923e3c-31dc-4eff-9117-188ade222f89, 34fea5e5-5c96-4044-b09f-a5acd09c8c81, 5bfe66c4-9b92-48bf-90c2-2a2ce74491da, 6bdbd638-bda9-4d61-9890-341189d79ffc, 6c3dd8c7-42c6-4385-af4b-47cab584754e, 703c7271-a31f-4b12-a084-f5968a02b039, 793fc758-946d-4711-88b9-8a93fd9e616c, 99e43b3b-2f1e-42b8-a122-72c660198d7d, 9da14c68-1616-4e56-8bda-e7059ae77782, b027c249-ef74-4163-b267-18a7717cd5d8]
+ports               : [0cb81407-2f13-4500-a797-7466935a8fc4, 1b351699-3b9a-4219-b0cd-1183f8676797, 201b0565-1a2d-4ee7-bfd3-b6e59e7d45c8, 7116454e-6868-4edd-a8b8-0d2a97805cba, 749b5e17-487d-47ce-b4d7-03da832b0d01, 7986f49e-d589-48af-9258-5b99ba033d0c, 7d010b6f-af9f-4b78-acc2-ae1af3727819, f8396b18-e21b-48d7-b7fa-f88301e66bc2]
+static_routes       : [004ba08b-6143-4597-b14d-c3b1f69f6eae, 03ce9b7b-fbf4-41b1-84fc-6c3b91cea1d2, 117f4e7b-ddba-4f7e-af31-0304359b4e0e, 19347630-eb8c-41dd-b3f3-ee1b6cce66d2, 2a264cc0-c106-426d-9e28-638bf48f16d7, 3ef297a4-f499-4ed4-b776-7f4577bc0b7c, 6d564b4a-8411-481c-b57e-be0f294bdcbe, 79866ccf-9b46-42fa-b603-41dc55554a28, 91652d92-0315-442e-9618-83c237ab2c5f, 9650fff9-fa05-431f-bf96-63edad847a93, bcd3ae84-726a-41b4-98ab-baacf6d6a28b, c88cac1a-5ed9-4f03-a542-079bdd0adecc, daa25c9f-7672-4798-b338-f2f0a7f515d8, ff9855f0-51b1-41ef-9621-dbb33c49ea6f]
+```
+
+Logical router has two types of ports, first all is port to host switch on each nodes and one port to join switch. Router has also static_routes configuration where every host has route to ovn pod network subnet and geneve tunel subnets.
+
+```
+# for a in `ovn-nbctl list logical_router ovn_cluster_router | grep static_routes | awk -F\[ '{print $2}' | sed s/\]//g | tr "\," "\n" | sed "s/\s//g"`; do ovn-nbctl list logical_router_static_route $a ; echo "" ; done;
+_uuid               : 004ba08b-6143-4597-b14d-c3b1f69f6eae
+bfd                 : []
+external_ids        : {}
+ip_prefix           : "100.64.0.3"
+nexthop             : "100.64.0.3"
+options             : {}
+output_port         : []
+policy              : []
+route_table         : ""
+
+_uuid               : 19347630-eb8c-41dd-b3f3-ee1b6cce66d2
+bfd                 : []
+external_ids        : {}
+ip_prefix           : "10.38.3.0/24"
+nexthop             : "10.38.3.2"
+options             : {}
+output_port         : []
+policy              : src-ip
+route_table         : ""
+.
+.
+```
+
+Tbd - see dbs/ovn_cluster_router.out
 
 
 
