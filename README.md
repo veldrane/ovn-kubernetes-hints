@@ -279,7 +279,47 @@ type                : ""
 up                  : true
 ```
 
+#### Services and load_balancers
 
+Every hostswitch (so every hosts) has the same set of load_balancers in load_balancer_group. Load balancers are used for load balancing kubernetes services across appropriate endpoints/pods.
+
+
+```Kubernetes record
+$ kubectl get svc -n hashicups -o wide | grep public-api
+public-api       ClusterIP   10.49.92.228   <none>        8080/TCP   26d   app=public-api
+```
+
+```Host switch again
+# ovn-nbctl list logical_switch ovn17.lab.syscallx86.com
+_uuid               : 6391e29b-635f-41b8-babf-c18440527f08
+acls                : [ea07d89e-b511-4cd9-87da-000b21448c8f]
+copp                : []
+dns_records         : []
+external_ids        : {}
+forwarding_groups   : []
+load_balancer       : [16de93e4-df77-4be9-882e-d1b3c46ca5e5]
+load_balancer_group : [b697d980-3f51-49ab-bb2c-6ac52a3cfc50, e5a2c900-9c37-427f-8320-f824b5298567]
+name                : ovn17.lab.syscallx86.com
+other_config        : {subnet="10.38.3.0/24"}
+ports               : [7dba73fa-4a75-4f44-869d-ecb8e0a9d1d5, 81d89c9f-0a9b-41a1-a4b7-831faf85da51, af7a5bef-3e2c-40c3-b724-df0453d25fa6, ba1c2379-c0bf-48bc-9852-624d6016c6de]
+qos_rules           : [dfe9eb9a-9320-46c1-80ce-74bdae28e872]
+```
+
+
+```Load balancer record
+# for a in `ovn-nbctl list logical_switch ovn17.lab.syscallx86.com | grep load_balancer_group | awk -F\[ '{print $2}' | sed s/\]//g | tr "\," "\n" | sed "s/\s//g"`; do for b in `ovn-nbctl list load_balancer_group $a | grep load_balancer | awk -F\[ '{print $2}' | sed s/\]//g | tr "\," "\n" | sed "s/\s//g"`; do ovn-nbctl list load_balancer $b ; echo ""; done; done;
+_uuid               : 1fb43003-6b23-48db-bec5-30bfe18bc7bb
+external_ids        : {"k8s.ovn.org/kind"=Service, "k8s.ovn.org/owner"="hashicups/public-api"}
+health_check        : []
+ip_port_mappings    : {}
+name                : "Service_hashicups/public-api_TCP_cluster"
+options             : {event="false", hairpin_snat_ip="169.254.169.5 fd69::5", neighbor_responder=none, reject="true", skip_snat="false"}
+protocol            : tcp
+selection_fields    : []
+vips                : {"10.49.92.228:8080"=""}
+.
+.
+```
 
 ## Possible bugs and quirks of this instalation
 
