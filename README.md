@@ -321,6 +321,59 @@ vips                : {"10.49.92.228:8080"=""}
 .
 ```
 
+### Geneve routers
+
+Every node in the cluster has own logical_router used for comunication betweed other nodes in the cluster. There is also records belonging to internal pods
+
+```
+# ovn-nbctl list logical_router GR_ovn17.lab.syscallx86.com 
+_uuid               : ea9f5dba-5bd5-4d77-b146-2d713be70e52
+copp                : aad92053-47eb-48a9-b4e2-21cdf8d74137
+enabled             : []
+external_ids        : {physical_ip="10.1.16.17", physical_ips="10.1.16.17"}
+load_balancer       : [16de93e4-df77-4be9-882e-d1b3c46ca5e5]
+load_balancer_group : [b697d980-3f51-49ab-bb2c-6ac52a3cfc50, c532c7d4-047f-415a-8e6e-f80f7b383ba5]
+name                : GR_ovn17.lab.syscallx86.com
+nat                 : [46ab6b56-a4cf-4d6e-b33d-38c2412c5709, 72349066-4787-4bf7-b7d3-e0d8295bbb82]
+options             : {always_learn_from_arp_request="false", chassis="3b04939d-02a9-4d58-a1fc-3da8affd37f3", dynamic_neigh_routers="true", lb_force_snat_ip=router_ip, mac_binding_age_threshold="300", snat-ct-zone="0"}
+policies            : []
+ports               : [0a417d01-8691-4d41-95ec-ee03e21931e6, f71c16ec-8103-4490-a1f3-3ff49f6a5c07]
+static_routes       : [7f723c3c-9119-4a16-a934-c0054ed83337, 94cc1776-8948-46a8-8c88-c6c0f9995746, b5993c5b-0455-44c5-be49-28cf895deab2]
+```
+
+#### Hosted pods covered by services
+
+```
+$ kubectl get svc -o wide -n external-dns
+NAME           TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+external-dns   ClusterIP   10.49.40.85   <none>        7979/TCP   54d   app.kubernetes.io/instance=external-dns,app.kubernetes.io/name=external-dns
+```
+
+```
+$ kubectl get pods -o wide -n external-dns
+NAME                            READY   STATUS    RESTARTS   AGE   IP          NODE                       NOMINATED NODE   READINESS GATES
+external-dns-555764ffff-pqmh4   1/1     Running   31         43d   10.38.3.3   ovn17.lab.syscallx86.com   <none>           <none>
+```
+
+
+```
+# for a in `ovn-nbctl list logical_router GR_ovn17.lab.syscallx86.com | grep load_balancer_group | awk -F\[ '{print $2}' | sed s/\]//g | tr "\," "\n" | sed "s/\s//g"`; do for b in `ovn-nbctl list load_balancer_group $a | grep load_balancer | awk -F\[ '{print $2}' | sed s/\]//g | tr "\," "\n" | sed "s/\s//g"`; do ovn-nbctl list load_balancer $b ; echo ""; done; done;
+.
+.
+_uuid               : 9c617d4e-2d4d-4341-8c3d-9716ba33ad9d
+external_ids        : {"k8s.ovn.org/kind"=Service, "k8s.ovn.org/owner"="external-dns/external-dns"}
+health_check        : []
+ip_port_mappings    : {}
+name                : "Service_external-dns/external-dns_TCP_cluster"
+options             : {event="false", hairpin_snat_ip="169.254.169.5 fd69::5", neighbor_responder=none, reject="true", skip_snat="false"}
+protocol            : tcp
+selection_fields    : []
+vips                : {"10.49.40.85:7979"="10.38.3.3:7979"}
+.
+.
+```
+
+
 ## Possible bugs and quirks of this instalation
 
 - if you enbable externalip is possible to route trafice from outside world to the pod network. Needs to be checked on the ocp4 as well in the future.
