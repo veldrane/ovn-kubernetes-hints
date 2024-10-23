@@ -1,4 +1,4 @@
-## ovn-kubernetes-hints
+# ovn-kubernetes-hints
 Set of scripts and settings for clean ovn-kubernetes cni installation on the kubernetes (not openshift).
 
 - https://ovn-kubernetes.io/
@@ -11,7 +11,7 @@ Set of scripts and settings for clean ovn-kubernetes cni installation on the kub
 Suppose the topic deserves own repository, a lot of stuff is just a copy of the 21_ovn in the lab project.
 
 
-### Important features 
+## Important features 
 
 - EgressIP based on the definition (on the namespace, label etc). Important for enterprise environmnets because posibility of cfg firewall rules on higher application sets (applications are in namespaces => ns has egressip). EgressIP must be enabled on the cni.
 
@@ -22,7 +22,7 @@ deployment object:
 https://docs.okd.io/latest/networking/configuring-ipfailover.html
 
 
-### Repository ontent
+## Repository ontent
 
 - ./yaml - object with working ovn object configuration
 - ./images - dockerfiles and some set of customized stuff
@@ -30,7 +30,7 @@ https://docs.okd.io/latest/networking/configuring-ipfailover.html
 - ./dbs - exports from databases
 
 
-### Test cluster configuration
+## Test cluster configuration
 
 Cluster is installed by clean kubeadm command via ansible roles and scripts (look at my lab project and folder 05_k8s). Firewall is disabled and it needs to have more research here to find how to incorporate some ipfilter rules (nftable/iptables) into cni and nodes. Network policy is done by openflow rules.
 
@@ -43,7 +43,7 @@ Cluster is installed by clean kubeadm command via ansible roles and scripts (loo
 - ssl has been disabled (openshift has slighly different configuration where more stuff are placed on one pod => no ssl just unix sockets)
 - EgressIp has been enabled
 
-### Basic ovn commands
+## Basic ovn commands
 
 This description is mainly focused on the north bound database => so the high level network setup of the cni:
 
@@ -71,7 +71,7 @@ List of tables can be found in man page of the
 https://man7.org/linux/man-pages/man5/ovn-nb.5.html
 
 
-#### List of content of the nb database:
+### List of content of the nb database:
 
 ```
 # ovn-nbctl show
@@ -110,7 +110,7 @@ switch 6dcf5b88-9ef6-4818-9327-cb70139b372e (ext_ovn17.lab.syscallx86.com)
 
 
 
-### CNI network architecture
+## CNI network architecture
 
 Based on the https://ovn-kubernetes.io/design/topology/ ovn has:
 
@@ -122,7 +122,7 @@ Based on the https://ovn-kubernetes.io/design/topology/ ovn has:
     - router for routing traffic from hosted pods to other nodes:
 
 
-#### Join switch
+### Join switch
 
 ```
 # ovn-nbctl list logical_switch join
@@ -177,7 +177,7 @@ up                  : true
 ```
 
 
-#### Ovn cluster router (ovn_cluster_router)
+### Ovn cluster router (ovn_cluster_router)
 
 ```
 # ovn-nbctl list logical_router ovn_cluster_router
@@ -224,8 +224,63 @@ route_table         : ""
 
 Tbd - see dbs/ovn_cluster_router.out
 
+### Host switches
+
+Host switches are used on the servers for connecting hosted pods and (probably - must be checked) load balancing via services. Kube proxy in case of ovn-kubernetes is not necessary. Names of the host switches are based on the hostname of nodes. 
 
 
-### Possible bugs and quirks of this instalation
+```
+# ovn-nbctl list logical_switch ovn17.lab.syscallx86.com
+_uuid               : 6391e29b-635f-41b8-babf-c18440527f08
+acls                : [ea07d89e-b511-4cd9-87da-000b21448c8f]
+copp                : []
+dns_records         : []
+external_ids        : {}
+forwarding_groups   : []
+load_balancer       : [16de93e4-df77-4be9-882e-d1b3c46ca5e5]
+load_balancer_group : [b697d980-3f51-49ab-bb2c-6ac52a3cfc50, e5a2c900-9c37-427f-8320-f824b5298567]
+name                : ovn17.lab.syscallx86.com
+other_config        : {subnet="10.38.3.0/24"}
+ports               : [7dba73fa-4a75-4f44-869d-ecb8e0a9d1d5, 81d89c9f-0a9b-41a1-a4b7-831faf85da51, af7a5bef-3e2c-40c3-b724-df0453d25fa6, ba1c2379-c0bf-48bc-9852-624d6016c6de]
+qos_rules           : [dfe9eb9a-9320-46c1-80ce-74bdae28e872]
+```
+
+#### Host ports and binding to the pods
+
+If we need find appropriate port of the kubernetes pod, we have to first find host where pod is placed
+
+
+```
+$ kubectl get pods -n external-dns -o wide
+NAME                            READY   STATUS    RESTARTS   AGE   IP          NODE                       NOMINATED NODE   READINESS GATES
+external-dns-555764ffff-pqmh4   1/1     Running   31         42d   10.38.3.3   ovn17.lab.syscallx86.com   <none>           <none>
+```
+
+Then we can check ports on the host switch and find appropriate record.
+
+```
+# for a in `ovn-nbctl list logical_switch ovn17.lab.syscallx86.com | grep ports | awk -F\[ '{print $2}' | sed s/\]//g | tr "\," "\n" | sed "s/\s//g"`; do ovn-nbctl list logical_switch_port $a ; echo "" ; done;
+_uuid               : 7dba73fa-4a75-4f44-869d-ecb8e0a9d1d5
+addresses           : ["0a:58:0a:26:03:03 10.38.3.3"]
+dhcpv4_options      : []
+dhcpv6_options      : []
+dynamic_addresses   : []
+enabled             : []
+external_ids        : {namespace=external-dns, pod="true"}
+ha_chassis_group    : []
+mirror_rules        : []
+name                : external-dns_external-dns-555764ffff-pqmh4
+options             : {iface-id-ver="4711423e-228e-4deb-b9db-f33b9c4f9452", requested-chassis=ovn17.lab.syscallx86.com}
+parent_name         : []
+port_security       : ["0a:58:0a:26:03:03 10.38.3.3"]
+tag                 : []
+tag_request         : []
+type                : ""
+up                  : true
+```
+
+
+
+## Possible bugs and quirks of this instalation
 
 - if you enbable externalip is possible to route trafice from outside world to the pod network. Needs to be checked on the ocp4 as well in the future.
